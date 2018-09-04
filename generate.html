@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jspdf.min.js"></script>
+		<script type="text/javascript">
+		var str="Annamacharya institute of technology and sciences";
+		var year=localStorage.getItem("year");
+		var branch=localStorage.getItem("branch");
+		var sec=localStorage.getItem("sec");
+		var etype=localStorage.getItem("etype");
+		var subname=localStorage.getItem("subname");
+		var qp=localStorage.getItem("qpaper");
+		var total=localStorage.getItem("numpapers");
+		
+		function download()
+		{
+			var k=0;
+			var doc=new jsPDF('p','mm','a4');
+			var center=(160-subname.length)/2;
+			while(k<total)
+			{
+			var i=0;
+			doc.setFontSize(16);
+			doc.text(40,20+(80*i),str);
+			doc.text(60,30+(80*i),etype+" lab examinations");
+			doc.text(30,40+(80*i),year+" year");
+			doc.text(80,40+(80*i),"branch="+branch);
+			doc.text(150,40+(80*i),"section="+sec);
+			doc.text(center,50+(80*i),subname);
+			doc.text(20,55+(80*i),"****************************************************************************");
+			doc.setFontSize(10);
+			doc.text(30,60+(80*i),"write aim, description, program, sample input and output and result for the below programs");
+			var arr = []
+			while(arr.length < qp){
+			var randomnumber = Math.floor(Math.random()*total) + 1;
+			if(arr.indexOf(randomnumber) > -1) continue;
+			arr[arr.length] = randomnumber;
+			}
+			for(var j=1;j<=qp;j++)
+			{
+				//var rand=Math.floor((Math.random() * total) + 1);
+				doc.text(20,65+(80*i)+(5*j),j+". "+localStorage.getItem(arr[j-1]));
+			}
+			i=1;
+			doc.setFontSize(16);
+			doc.text(40,20+(80*i),str);
+			doc.text(60,30+(80*i),etype+" lab examinations");
+			doc.text(30,40+(80*i),year+" year");
+			doc.text(80,40+(80*i),"branch="+branch);
+			doc.text(150,40+(80*i),"section="+sec);
+			doc.text(center,50+(80*i),subname);
+			doc.text(20,55+(80*i),"****************************************************************************");
+			doc.setFontSize(10);
+			doc.text(30,60+(80*i),"write aim, description, program, sample input and output and result for the below programs");
+			var arr = []
+			while(arr.length < qp){
+			var randomnumber = Math.floor(Math.random()*total) + 1;
+			if(arr.indexOf(randomnumber) > -1) continue;
+			arr[arr.length] = randomnumber;
+			}
+			for(var j=1;j<=qp;j++)
+			{
+				//var rand=Math.floor((Math.random() * total) + 1);
+				doc.text(20,65+(80*i)+(5*j),j+". "+localStorage.getItem(arr[j-1]));
+			}
+			i=2;
+			doc.setFontSize(16);
+			doc.text(40,20+(80*i),str);
+			doc.text(60,30+(80*i),etype+" lab examinations");
+			doc.text(30,40+(80*i),year+" year");
+			doc.text(80,40+(80*i),"branch="+branch);
+			doc.text(150,40+(80*i),"section="+sec);
+			doc.text(center,50+(80*i),subname);
+			doc.text(20,55+(80*i),"****************************************************************************");
+			doc.setFontSize(10);
+			doc.text(30,60+(80*i),"write aim, description, program, sample input and output and result for the below programs");
+			var arr = []
+			while(arr.length < qp){
+			var randomnumber = Math.floor(Math.random()*total) + 1;
+			if(arr.indexOf(randomnumber) > -1) continue;
+			arr[arr.length] = randomnumber;
+			}
+			for(var j=1;j<=qp;j++)
+			{
+				//var rand=Math.floor((Math.random() * total) + 1);
+				doc.text(20,65+(80*i)+(5*j),j+". "+localStorage.getItem(arr[j-1]));
+			}
+			doc.addPage();
+			k=k+3;
+			}
+			doc.save("sample.pdf");
+		}
+		</script>
+		
+	</head>
+	<body>
+		<h1>your question papers are ready</h1><br/>
+		<h1>click <a href="javascript:download()">here</a> to download pdf</h1>
+	</body>
+</html>
+		
