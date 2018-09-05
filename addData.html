@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script>
+	function myFunction() {
+		//alert("Hello! I am an alert box!");
+		localStorage.clear();
+		var total=document.getElementById("totalNum").value;
+		var qp=document.getElementById("nump").value;
+		var year=document.getElementById("year").value;
+		var branch=document.getElementById("branch").value;
+		var sec=document.getElementById("sec").value;
+		var subname=document.getElementById("subname").value;
+		var etype=document.getElementById("examType").value;
+		var tpapers=document.getElementById("totalpapers").value;
+		localStorage.setItem("numpapers",total);
+		localStorage.setItem("qpaper",qp);
+		localStorage.setItem("year",year);
+		localStorage.setItem("sec",sec);
+		localStorage.setItem("branch",branch);
+		localStorage.setItem("subname",subname);
+		localStorage.setItem("etype",etype);
+		localStorage.setItem("tpapers",tpapers);
+		//alert("branch="+localStorage.getItem("etype"));
+		
+		var number = total
+            var container = document.getElementById("container");
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0;i<number;i++){
+                container.appendChild(document.createTextNode("Enter question " + (i+1)));
+                var input = document.createElement("input");
+                input.type = "text";
+				input.id="q"+(i+1);
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+            }
+			var btn = document.createElement("BUTTON");
+			var t = document.createTextNode("add");
+			btn.appendChild(t);
+			btn.id="btn1";
+			btn.addEventListener("click",func2,false);
+			container.appendChild(btn);
+			//document.getElementById("submit").addEventListener("click",function(){ alert("hello world");});
+	}
+	function func2()
+	{
+			var n=localStorage.getItem("numpapers");
+			var str="";
+			for(var i=1;i<=n;i++)
+			{
+				localStorage.setItem(i,document.getElementById("q"+i).value);
+				str=str+document.getElementById("q"+i).value+" ";
+			}
+			alert(str);
+			//alert("questions added");
+			//alert(localStorage.getItem(3));
+			var mydiv = document.getElementById("container2");
+			var aTag = document.createElement('a');
+			aTag.setAttribute('href',"generate.html");
+			aTag.innerHTML = "generate question papers";
+			aTag.class="button1";
+			mydiv.appendChild(aTag);
+	}
+	</script>
+	<style>
+input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+.button1 {
+    background-color:#32bfc1;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	}
+
+</style>
+	</head>
+	<body>
+		<center>
+		<h1 style="font-size:50px;color:green">Please Enter the Below Details</h1><br/>
+			<form>
+				year:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select required id="year">
+					<option value="1st">1st year</option>
+					<option value="2nd">2nd year</option>
+					<option value="3rd">3rd year</option>
+					<option value="4th">4th year</option>
+					</select><br/>
+				branch:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select required id="branch">
+					<option value="cse">cse</option>
+					<option value="ece">ece</option>
+					<option value="mech">Mech</option>
+					<option value="eee">EEE</option>
+					<option value="IT">IT</option>
+					<option value="civil">CIVIL</option>
+					</select>
+					<br/>
+				section:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input required type="text" id="sec"/><br/>
+				subjectName:<input required type="text" id="subname"/><br/>
+				ExamType:<select required id="examType">
+					<option value="1st_Internal">1st Internal</option>
+					<option value="2nd_Internal">2nd Internal</option>
+					<option value="external">External</option>
+					</select><br/>
+					
+			Enter the total number of questions you would like to add:&nbsp; <input type="text" id="totalNum"/><br/>
+			Enter the number of questions you want per paper:&nbsp; <input type="text" id="nump"/><br/>
+			Enter the total number of questions paers you want:&nbsp; <input type="text" id="totalpapers"/><br/>
+				<button type="button" onclick="myFunction()">submit</button>
+			</form>
+			<div id="container2"/>
+			<div id="container"/><br/>
+			
+			</center>
+		
+	</body>
+</html>
