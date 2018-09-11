@@ -47,13 +47,13 @@
 	function func2()
 	{
 			var n=localStorage.getItem("numpapers");
-			var str="";
+			//var str="";
 			for(var i=1;i<=n;i++)
 			{
 				localStorage.setItem(i,document.getElementById("q"+i).value);
-				str=str+document.getElementById("q"+i).value+" ";
+				//str=str+document.getElementById("q"+i).value+" ";
 			}
-			alert(str);
+			//alert(str);
 			//alert("questions added");
 			//alert(localStorage.getItem(3));
 			var mydiv = document.getElementById("container2");
